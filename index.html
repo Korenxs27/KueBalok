@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>KULOK</title>
+    <link rel="icon" href="img/Logo.jpeg" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div
+        class="logo"
+        tabindex="0"
+        aria-label="Logo KULOK Marketplace Kue Balok"
+      >
+        KULOK
+      </div>
+      <nav role="navigation" aria-label="Navigasi utama">
+        <button
+          class="nav-btn active"
+          data-section="home"
+          aria-current="page"
+          aria-label="Beranda"
+        >
+          Home
+        </button>
+        <button class="nav-btn" data-section="products" aria-label="Produk">
+          Produk
+        </button>
+        <button class="nav-btn" data-section="promo" aria-label="Promo">
+          Promo
+        </button>
+        <button class="nav-btn" data-section="categories" aria-label="Kategori">
+          Kategori
+        </button>
+        <button class="nav-btn" data-section="account" aria-label="Akun Saya">
+          Account
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Beranda -->
+      <section
+        id="section-home"
+        class="section active"
+        role="region"
+        aria-label="Halaman Beranda"
+      >
+        <div class="banner-container" aria-live="polite" aria-atomic="true">
+          <img
+            src="img/promo/promo1.jpg"
+            alt="Banner promo kue balok spesial 1 dengan warna orange dan ilustrasi kue"
+            class="banner-slide active"
+          />
+          <img
+            src="img/promo/promo2.jpg"
+            alt="Banner diskon sampai 50 persen dengan latar belakang coklat keemasan"
+            class="banner-slide"
+          />
+          <img
+            src="img/promo/promo3.jpg"
+            alt="Banner untuk kue balok dengan rasa baru warna pink dan coklat"
+            class="banner-slide"
+          />
+          <div class="banner-text" aria-live="polite" id="banner-desc">
+            Promo Kue Balok Spesial 1
+          </div>
+          <div
+            class="banner-controls"
+            role="tablist"
+            aria-label="Kontrol slide banner"
+          >
+            <button
+              class="banner-dot active"
+              data-index="0"
+              role="tab"
+              aria-selected="true"
+              aria-controls="banner-desc"
+              tabindex="0"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              class="banner-dot"
+              data-index="1"
+              role="tab"
+              aria-selected="false"
+              aria-controls="banner-desc"
+              tabindex="-1"
+              aria-label="Slide 2"
+            ></button>
+            <button
+              class="banner-dot"
+              data-index="2"
+              role="tab"
+              aria-selected="false"
+              aria-controls="banner-desc"
+              tabindex="-1"
+              aria-label="Slide 3"
+            ></button>
+          </div>
+        </div>
+
+        <div
+          class="flash-sale-container"
+          role="region"
+          aria-label="Promo Flash Sale"
+        >
+          <div class="flash-sale-title">Flash Sale Kue Balok!</div>
+          <div class="countdown" aria-live="off" aria-atomic="true">
+            <div id="countdown-hours" aria-label="Jam">00</div>
+            <div id="countdown-minutes" aria-label="Menit">00</div>
+            <div id="countdown-seconds" aria-label="Detik">00</div>
+          </div>
+        </div>
+
+        <div class="search-container" role="search">
+          <input
+            type="search"
+            id="search-input"
+            placeholder="Cari kue balok..."
+            aria-label="Cari kue balok"
+          />
+          <button aria-label="Cari">
+            <span class="material-icons">search</span>
+          </button>
+        </div>
+
+        <div
+          class="product-grid"
+          id="home-product-grid"
+          aria-live="polite"
+          aria-label="Rekomendasi produk kue balok"
+        >
+          <!-- Produk akan dirender di sini -->
+        </div>
+      </section>
+
+      <!-- Produk -->
+      <section
+        id="section-products"
+        class="section"
+        role="region"
+        aria-label="Halaman Produk"
+        tabindex="-1"
+        hidden
+      >
+        <div class="filter-panel" aria-label="Filter dan sortir produk">
+          <div class="filter-group">
+            <label for="sort-select">Sortir:</label>
+            <select
+              id="sort-select"
+              aria-controls="products-product-grid"
+              aria-label="Sortir produk berdasarkan"
+            >
+              <option value="featured">Rekomendasi</option>
+              <option value="price-asc">Harga: Rendah ke Tinggi</option>
+              <option value="price-desc">Harga: Tinggi ke Rendah</option>
+              <option value="rating-desc">Rating Terbaik</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="filter-flavor">Rasa:</label>
+            <select
+              id="filter-flavor"
+              aria-controls="products-product-grid"
+              aria-label="Filter produk berdasarkan rasa"
+            >
+              <option value="all">Semua</option>
+              <option value="cokelat">Cokelat</option>
+              <option value="keju">Keju</option>
+              <option value="original">Original</option>
+              <option value="matcha">Matcha</option>
+              <option value="taro">Taro</option>
+            </select>
+          </div>
+        </div>
+        <div
+          class="search-container"
+          role="search"
+          style="max-width: 1000px; margin: 0 auto 20px"
+        >
+          <input
+            type="search"
+            id="products-search"
+            placeholder="Cari produk..."
+            aria-label="Cari produk"
+          />
+          <button id="products-search-btn" aria-label="Cari produk">
+            <span class="material-icons">search</span>
+          </button>
+        </div>
+        <div
+          class="product-grid"
+          id="products-product-grid"
+          aria-live="polite"
+          aria-label="Daftar produk kue balok"
+        >
+          <!-- Produk dirender di sini -->
+        </div>
+      </section>
+
+      <!-- Promo -->
+      <section
+        id="section-promo"
+        class="section"
+        role="region"
+        aria-label="Halaman Promo"
+        tabindex="-1"
+        hidden
+      >
+        <div class="container" style="padding: 2rem 0; text-align: center">
+          <h2
+            style="
+              color: #ff6f20;
+              font-weight: 700;
+              font-size: 2rem;
+              margin-bottom: 1rem;
+            "
+          >
+            Promo Spesial Mingguan
+          </h2>
+          <p style="max-width: 600px; margin: 0 auto 1.5rem">
+            Dapatkan diskon menarik, bundling kue balok, dan voucher kupon untuk
+            pembelian pertama Anda!
+          </p>
+          <img
+            src="https://placehold.co/600x250/ff6f20/fff?text=Promo+Spesial+Mingguan+KULOK"
+            alt="Banner promo spesial mingguan KULOK dengan tema orange dan ilustrasi kue balok lucu"
+            style="border-radius: 16px; max-width: 100%"
+          />
+        </div>
+      </section>
+
+      <!-- Kategori -->
+      <section
+        id="section-categories"
+        class="section"
+        role="region"
+        aria-label="Halaman Kategori"
+        tabindex="-1"
+        hidden
+      >
+        <div class="container" style="padding: 2rem 0">
+          <h2
+            style="
+              color: #ff6f20;
+              font-weight: 700;
+              font-size: 2rem;
+              margin-bottom: 1rem;
+            "
+          >
+            Kategori Kue Balok
+          </h2>
+          <ul
+            style="
+              display: flex;
+              flex-wrap: wrap;
+              gap: 1rem;
+              justify-content: center;
+            "
+          >
+            <li>
+              <button
+                class="category-btn"
+                data-flavor="cokelat"
+                aria-label="Kategori Cokelat"
+              >
+                Cokelat
+              </button>
+            </li>
+            <li>
+              <button
+                class="category-btn"
+                data-flavor="keju"
+                aria-label="Kategori Keju"
+              >
+                Keju
+              </button>
+            </li>
+            <li>
+              <button
+                class="category-btn"
+                data-flavor="original"
+                aria-label="Kategori Original"
+              >
+                Original
+              </button>
+            </li>
+            <li>
+              <button
+                class="category-btn"
+                data-flavor="matcha"
+                aria-label="Kategori Matcha"
+              >
+                Matcha
+              </button>
+            </li>
+            <li>
+              <button
+                class="category-btn"
+                data-flavor="taro"
+                aria-label="Kategori Taro"
+              >
+                Taro
+              </button>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Akun Saya -->
+      <section
+        id="section-account"
+        class="section"
+        role="region"
+        aria-label="Halaman Akun Saya"
+        tabindex="-1"
+        hidden
+      >
+        <div class="container" style="padding: 2rem 0">
+          <h2
+            style="
+              color: #ff6f20;
+              font-weight: 700;
+              font-size: 2rem;
+              margin-bottom: 2rem;
+            "
+          >
+            Akun Saya
+          </h2>
+          <div
+            id="user-info"
+            aria-live="polite"
+            style="margin-bottom: 1rem"
+          ></div>
+          <div id="account-forms">
+            <button
+              id="btn-login"
+              style="
+                background: #ff6f20;
+                color: #fff;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 24px;
+                font-weight: 700;
+                cursor: pointer;
+              "
+            >
+              Login / Daftar
+            </button>
+          </div>
+          <div id="account-content" hidden>
+            <h3>Transaksi Saya</h3>
+            <p style="color: #6b5840">Belum ada transaksi.</p>
+            <h3>Wishlist</h3>
+            <p style="color: #6b5840">Wishlist kosong.</p>
+            <h3>Voucher Saya</h3>
+            <p style="color: #6b5840">
+              Kupon diskon 10% untuk pembelian pertama masih aktif.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom Navigation for Mobile -->
+    <nav class="bottom-nav" role="navigation" aria-label="Navigasi bawah">
+      <button
+        class="bottom-nav-btn active"
+        data-section="home"
+        aria-current="page"
+        aria-label="Beranda"
+      >
+        <span class="material-icons">home</span>
+        <span>Home</span>
+      </button>
+      <button
+        class="bottom-nav-btn"
+        data-section="products"
+        aria-label="Produk"
+      >
+        <span class="material-icons">cake</span>
+        <span>Produk</span>
+      </button>
+      <button class="bottom-nav-btn" data-section="promo" aria-label="Promo">
+        <span class="material-icons">local_offer</span>
+        <span>Promo</span>
+      </button>
+      <button
+        class="bottom-nav-btn"
+        data-section="categories"
+        aria-label="Kategori"
+      >
+        <span class="material-icons">category</span>
+        <span>Kategori</span>
+      </button>
+      <button
+        class="bottom-nav-btn"
+        data-section="account"
+        aria-label="Akun Saya"
+      >
+        <span class="material-icons">person</span>
+        <span>Akun</span>
+      </button>
+    </nav>
+
+    <!-- Modal Detail Produk -->
+    <div
+      class="modal"
+      id="modal-product-detail"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-product-name"
+      tabindex="-1"
+    >
+      <div class="modal-content">
+        <button
+          class="modal-close"
+          aria-label="Tutup detail produk"
+          id="modal-detail-close"
+        >
+          &times;
+        </button>
+        <img src="" alt="" class="product-detail-img" id="detail-img" />
+        <div class="product-detail-info">
+          <h2 class="product-detail-name" id="modal-product-name"></h2>
+          <div class="product-detail-rating" id="modal-product-rating"></div>
+          <p class="product-detail-description" id="modal-product-desc"></p>
+          <div class="product-detail-price" id="modal-product-price"></div>
+          <div class="modal-btn-group" style="margin-top: 1rem">
+            <button class="btn-buy-now" id="btn-buy-now">Beli Sekarang</button>
+            <button class="btn-add-cart" id="btn-add-cart">
+              Tambah ke Keranjang
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Login -->
+    <div
+      class="modal"
+      id="modal-login"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="login-modal-title"
+      tabindex="-1"
+    >
+      <div class="modal-content" style="max-width: 400px">
+        <button
+          class="modal-close"
+          aria-label="Tutup login"
+          id="modal-login-close"
+        >
+          &times;
+        </button>
+        <h2
+          id="login-modal-title"
+          style="text-align: center; margin-bottom: 1rem; color: #ff6f20"
+        >
+          Login / Daftar
+        </h2>
+        <form id="login-form" aria-describedby="login-error-msg" novalidate>
+          <label
+            for="login-username"
+            style="
+              display: block;
+              margin-bottom: 0.25rem;
+              font-weight: 600;
+              color: #4b3b2b;
+            "
+            >Nama Pengguna</label
+          >
+          <input
+            type="text"
+            id="login-username"
+            name="username"
+            required
+            autocomplete="username"
+            style="
+              width: 100%;
+              padding: 10px;
+              font-size: 1rem;
+              border: 2px solid #ff6f20;
+              border-radius: 12px;
+              margin-bottom: 1rem;
+            "
+          />
+          <span
+            id="login-error-msg"
+            role="alert"
+            style="color: #d1430f; display: none; margin-bottom: 1rem"
+          ></span>
+          <button
+            type="submit"
+            style="
+              background: #ff6f20;
+              color: #fff;
+              border: none;
+              padding: 12px 24px;
+              border-radius: 32px;
+              font-weight: 700;
+              cursor: pointer;
+              width: 100%;
+            "
+          >
+            Masuk
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Floating Keranjang -->
+    <div
+      class="cart-floating-btn"
+      id="cart-btn"
+      aria-label="Buka keranjang belanja"
+      role="button"
+      tabindex="0"
+    >
+      <span class="material-icons" aria-hidden="true">shopping_cart</span>
+      <div
+        class="cart-count-badge"
+        id="cart-count"
+        aria-live="polite"
+        aria-atomic="true"
+        aria-relevant="additions removals"
+      >
+        0
+      </div>
+    </div>
+
+    <!-- Modal Keranjang -->
+    <div
+      class="modal"
+      id="modal-cart"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="cart-modal-title"
+      tabindex="-1"
+    >
+      <div class="modal-content" style="max-width: 500px">
+        <div class="cart-modal-header">
+          <h2 id="cart-modal-title" style="color: #ff6f20">
+            Keranjang Belanja
+          </h2>
+          <button
+            class="modal-close"
+            aria-label="Tutup keranjang belanja"
+            id="modal-cart-close"
+          >
+            &times;
+          </button>
+        </div>
+        <div id="cart-items">
+          <!-- Item di keranjang dirender di sini -->
+        </div>
+        <div class="cart-total" id="cart-total">Total: Rp 0</div>
+        <button class="btn-checkout" id="btn-checkout">Checkout</button>
+      </div>
+    </div>
+
+    <!-- Popup Promo Mingguan -->
+    <div
+      class="promo-popup"
+      id="promo-popup"
+      role="alertdialog"
+      aria-live="polite"
+      aria-modal="true"
+      aria-label="Promo Spesial KULOK"
+    >
+      <button
+        class="promo-popup-close"
+        aria-label="Tutup promo"
+        id="promo-close-btn"
+      >
+        &times;
+      </button>
+      <h4>Promo Mingguan KULOK!</h4>
+      <p>
+        Dapatkan kupon diskon 10% untuk pembelian pertama Anda. Gunakan kode:
+        KULOK10
+      </p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
